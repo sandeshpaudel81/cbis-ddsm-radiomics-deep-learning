@@ -29,8 +29,9 @@ AUC on 20% of patients held out, with patient-level bootstrap 95% CIs (full tabl
 
 **Takeaways**
 - **Deep features beat radiomics.** DenseNet121 reached 0.775 AUC vs 0.736 for radiomics.
-- **Fusion adds a small, and not significant lift** of +0.007 to +0.025 AUC over deep features alone. 
-  It is not statistically significant on this test set: the paired-bootstrap CIs include 0, e.g. Swin-T +0.018 (−0.003 to +0.039, p = 0.08).
+- **Fusion adds a small lift that is mostly not significant.** Early fusion improved frozen backbones by +0.007 to +0.028 AUC,
+  but changed fine-tuned Swin-T by −0.002. The paired-bootstrap CIs for early fusion include 0 (e.g. Swin-T +0.018, −0.003 to +0.039, p = 0.08).
+  Late fusion beat end-to-end fine-tuned Swin-T by +0.025 (+0.002 to +0.048, p = 0.04), a single comparison among several, not corrected for multiple testing.
   Radiomics are 11% of the fused inputs but carry 7% of the model's gain, so much of their information already exists in the CNN embedding.
 - **Partial fine-tuning of Swin-T** gave +0.019 AUC over frozen (p = 0.40) on ~1,900 training ROIs.
 - **Model selection was done honestly.** Training-set CV chose Swin-T. DenseNet121 scored higher on the test set, but
