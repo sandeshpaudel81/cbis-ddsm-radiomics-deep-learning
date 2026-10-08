@@ -20,7 +20,7 @@ AUC on 20% of patients held out, with patient-level bootstrap 95% CIs (full tabl
 | Model | AUC (95% CI) |
 |---|---|
 | Radiomics only (93 features) | 0.736 (0.680–0.783) |
-| Swin-T frozen *(CV-selected backbone)* | 0.724 |
+| Swin-T frozen *(CV-selected backbone)* | 0.725 |
 | Swin-T frozen + radiomics | 0.742 (0.689–0.794) |
 | Swin-T fine-tuned (end-to-end) | 0.743 (0.686–0.795) |
 | Swin-T fine-tuned + radiomics | 0.749 (0.697–0.798) |
@@ -29,8 +29,8 @@ AUC on 20% of patients held out, with patient-level bootstrap 95% CIs (full tabl
 
 **Takeaways**
 - **Deep features beat radiomics.** DenseNet121 reached 0.775 AUC vs 0.736 for radiomics.
-- **Fusion adds a small, consistent lift** of +0.007 to +0.018 AUC over deep features alone. It is not statistically
-  significant on this test set: the paired-bootstrap CIs include 0, e.g. Swin-T +0.018 (−0.003 to +0.039, p = 0.08).
+- **Fusion adds a small, and not significant lift** of +0.007 to +0.025 AUC over deep features alone. 
+  It is not statistically significant on this test set: the paired-bootstrap CIs include 0, e.g. Swin-T +0.018 (−0.003 to +0.039, p = 0.08).
   Radiomics are 11% of the fused inputs but carry 7% of the model's gain, so much of their information already exists in the CNN embedding.
 - **Partial fine-tuning of Swin-T** gave +0.019 AUC over frozen (p = 0.40) on ~1,900 training ROIs.
 - **Model selection was done honestly.** Training-set CV chose Swin-T. DenseNet121 scored higher on the test set, but
@@ -48,7 +48,7 @@ AUC on 20% of patients held out, with patient-level bootstrap 95% CIs (full tabl
 6. **Evaluation** — AUC, sensitivity, specificity, F1, accuracy on the test set; bootstrap CIs and paired comparisons.
 
 ## Running it
-Open `feature-fusion-cbis-ddsm-r.ipynb` on Kaggle with a GPU, attach
+Open `breast_lesion_classification.ipynb` on Kaggle with a GPU, attach
 [`awsaf49/cbis-ddsm-breast-cancer-image-dataset`](https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset),
 enable internet, and *Run All* (≈25–40 min on a T4). Settings live in the first code cell.
 Figures, cached features and result tables are written to `outputs/`.

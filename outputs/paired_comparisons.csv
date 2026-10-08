@@ -1,0 +1,7 @@
+Comparison,ΔAUC,95% CI,p (bootstrap)
+Swin-T (frozen) + Radiomics  vs  Swin-T (frozen),0.017744045160402067,-0.003 to +0.039,0.082
+Swin-T (frozen) + Radiomics  vs  Radiomics,0.006505576208178487,-0.038 to +0.053,0.772
+Swin-T fine-tuned + Radiomics  vs  Swin-T fine-tuned (features),-0.002030841250172166,-0.013 to +0.009,0.71
+Swin-T fine-tuned + Radiomics  vs  Radiomics,0.012752994630318093,-0.036 to +0.064,0.618
+Late fusion: Swin-T fine-tuned + Radiomics  vs  Swin-T fine-tuned (end-to-end),0.025230620955528082,+0.002 to +0.048,0.038
+Swin-T fine-tuned (end-to-end)  vs  Swin-T (frozen),0.01862178163293393,-0.023 to +0.062,0.396
